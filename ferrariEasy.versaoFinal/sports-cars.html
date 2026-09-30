@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sports Cars | Ferrari</title>
+ 
+    <!-- Fonte: mesma do indexz -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
+      rel="stylesheet"
+    />
+ 
+    
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="sports-cars.css" />
+  </head>
+ 
+  <body>
+    <!--
+      FERRARI — réplica do SENAI
+      quem fez a parte dos supercarros tá muito feio
+    -->
+ 
+  <!-- ======================= HEADER ======================= -->
+<header class="Header_header">
+  <div class="Header_topbar">
+    <div class="Header_content">
+      <a class="Header_logo" href="index.html" aria-label="Ferrari — Home">
+        <img src="img/logo.png.png" alt="Ferrari" />
+      </a>
+
+      <nav class="Header_nav" aria-label="Main navigation">
+        <ul class="Header_menu">
+          <li><a href="https://www.ferrari.com/en-BR">Racing</a></li>
+          <li><a href="sports-cars.html" aria-current="page">Sports Cars</a></li>
+          <li><a href="https://www.ferrari.com/en-BR">Collections</a></li>
+          <li><a href="https://www.ferrari.com/en-BR">Experiences</a></li>
+          <li><a href="https://www.ferrari.com/en-BR">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="Header_search">
+        <a href="https://www.ferrari.com/en-BR">Search</a>
+      </div>
+    </div>
+  </div>
+</header>
+ 
+    <!-- O conteúdo desta página é o menu abaixo (abre sozinho ao carregar).
+         O <main> existe para o script poder "travar" o fundo enquanto o menu está aberto. -->
+    <main>
+      <h1 class="sr-only">Sports Cars</h1>
+    </main>
+ 
+    <!-- ======================= MENU SPORTS CARS ======================= -->
+    <div class="cars-menu" id="cars-menu" role="dialog" aria-modal="true" aria-label="Sports Cars" tabindex="-1" inert>
+      <div class="cars-menu__rail">
+        <a class="cars-menu__logo" href="index.html" aria-label="Ferrari — Home">
+          <img src="img/logo.png.png" alt="Ferrari" />
+        </a>
+        <button class="cars-menu__close" type="button" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
+        </button>
+      </div>
+ 
+      <div class="cars-menu__nav">
+        <p class="cars-menu__label">Sports Cars</p>
+        <div class="cars-menu__cols">
+          <!-- as duas listas são geradas pelo JS (script 2) -->
+          <ul class="cars-menu__primary"></ul>
+          <div class="cars-menu__groups"></div>
+        </div>
+      </div>
+ 
+      <div class="cars-menu__preview">
+        <div class="cars-menu__stage">
+          <p class="cars-menu__title"></p>
+          <img class="cars-menu__img" alt="" />
+        </div>
+        <a class="cars-menu__cta" target="_blank" rel="noopener noreferrer">
+          <span>Discover more</span>
+          <span class="cars-menu__cta-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+ 
+
+    <script>
+      const FERRARI_URL = "https://www.ferrari.com/en-BR"; // destino de todos os "Discover more" e links do menu
+      const HOME_URL = "index.html"; // para onde o X / Esc levam (esta página só tem o menu)
+ 
+      // usuário pediu menos movimento no sistema? (desliga animações em JS)
+      const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ 
+      // atributos de um link que abre o site oficial em outra aba (url opcional)
+      const externalAttrs = (url) => `href="${url || FERRARI_URL}" target="_blank" rel="noopener noreferrer"`;
+    </script>
+ 
+    <!-- =========================================================
+         SCRIPT 2 — MENU SPORTS CARS (tela cheia) - variáveis terminam com "Cars"
+         - abre sozinho ao carregar a página
+         - passe o mouse (ou foque com Tab) num modelo para ver o carro no painel
+         - fecha com o X ou com Esc (volta para a página inicial)
+         ========================================================= -->
+    <script>
+      /* ======================================================================
+         ÁREA DOS PATHS DAS IMAGENS  
+         ====================================================================== */
+      const CARS_DIR = "cars/";
+ 
+      const groupsCars = [
+        {
+          label: "Range",
+          open: true, // grupo que já abre expandido
+          models: [
+            { name: "Ferrari Luce", img: "ferrari-luce.png" },
+            { name: "Ferrari 12Cilindri", img: "12cilindri.png" },
+            { name: "Ferrari 12Cilindri Spider", img: "12cilindri-spider.png" },
+            { name: "Ferrari Purosangue", img: "purosangue.png" },
+            { name: "849 Testarossa", img: "849-testarossa.png" },
+            { name: "849 Testarossa Spider", img: "849-testarossa-spider.png" },
+            { name: "Ferrari Amalfi", img: "amalfi.png" },
+            { name: "Ferrari Amalfi Spider", img: "amalfi-spider.png" },
+            { name: "296 GTB", img: "296-gtb.png" },
+            { name: "296 GTS", img: "296-gts.png" },
+          ],
+        },
+        {
+          label: "Special Series",
+          models: [
+            { name: "Ferrari 12Cilindri Manuale", img: "12cilindri-manuale.png" },
+            { name: "SF90 XX Stradale", img: "sf90-xx-stradale.png" },
+            { name: "SF90 XX Spider", img: "sf90-xx-spider.png" },
+            { name: "296 Speciale", img: "296-speciale.png" },
+            { name: "296 Speciale A", img: "296-speciale-a.png" },
+          ],
+        },
+        {
+          label: "Icona",
+          models: [
+            { name: "Ferrari Daytona SP3", img: "daytona-sp3.png" },
+            { name: "Ferrari Monza SP1", img: "monza-sp1.png" },
+            { name: "Ferrari Monza SP2", img: "monza-sp2.png" },
+          ],
+        },
+        {
+          label: "Supercars",
+          models: [
+            { name: "Ferrari F80", img: "f80.png" },
+            { name: "LaFerrari Aperta", img: "laferrari-aperta.png" },
+            { name: "LaFerrari", img: "laferrari.png" },
+            { name: "Enzo Ferrari", img: "enzo-ferrari.png" },
+            { name: "Ferrari F50", img: "f50.png" },
+            { name: "Ferrari F40", img: "f40.png" },
+            { name: "Ferrari GTO", img: "gto.png" },
+          ],
+        },
+        {
+          label: "GT Racing",
+          models: [{ name: "296 GT3", img: "296-gt3.png" }],
+        },
+        { label: "Past Models" }, // sem "models" = link direto
+      ];
+      /* ===================== FIM DA ÁREA DOS PATHS ===================== */
+ 
+      // coluna da esquerda (só "All models" é a tela atual; o resto leva ao site oficial)
+      const primaryCars = [
+        { label: "All models", chevron: true, current: true },
+        { label: "Your Ferrari", chevron: true },
+        { label: "Owners", chevron: true },
+        { label: "Ferrari Classiche" },
+        { label: "Pre-Owned", chevron: true },
+        { label: "Dealers", chevron: true },
+      ];
+ 
+      const CHEVRON_CARS = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>`;
+ 
+      const headerCars = document.querySelector("header");
+      const mainCars = document.querySelector("main");
+      const menuCars = document.getElementById("cars-menu");
+      const closeBtnCars = menuCars.querySelector(".cars-menu__close");
+      const stageCars = menuCars.querySelector(".cars-menu__stage");
+      const titleCars = menuCars.querySelector(".cars-menu__title");
+      const imgCars = menuCars.querySelector(".cars-menu__img");
+      const ctaCars = menuCars.querySelector(".cars-menu__cta");
+ 
+      /* ---------- monta as listas a partir dos dados ---------- */
+      menuCars.querySelector(".cars-menu__primary").innerHTML = primaryCars
+        .map((item) => {
+          const chevron = item.chevron ? CHEVRON_CARS : "";
+          return item.current
+            ? `<li><span class="cars-item is-current" aria-current="true">${item.label}${chevron}</span></li>`
+            : `<li><a class="cars-item" ${externalAttrs()}>${item.label}${chevron}</a></li>`;
+        })
+        .join("");
+ 
+      menuCars.querySelector(".cars-menu__groups").innerHTML = groupsCars
+        .map((group, g) =>
+          group.models
+            ? `<div class="cars-group${group.open ? " is-open" : ""}">
+                 <button class="cars-item cars-group__toggle" type="button" aria-expanded="${!!group.open}" aria-controls="cars-group-${g}">
+                   <span>${group.label}</span>${CHEVRON_CARS}
+                 </button>
+                 <div class="cars-group__body" id="cars-group-${g}">
+                   <ul class="cars-group__list">
+                     ${group.models
+                       .map((model) => `<li><a class="cars-model" ${externalAttrs(model.url)}>${model.name}</a></li>`)
+                       .join("")}
+                   </ul>
+                 </div>
+               </div>`
+            : `<a class="cars-item" ${externalAttrs(group.url)}>${group.label}</a>`
+        )
+        .join("");
+ 
+      const boxesCars = Array.from(menuCars.querySelectorAll(".cars-group"));
+      const linksCars = Array.from(menuCars.querySelectorAll(".cars-model"));
+      const flatCars = groupsCars.flatMap((group) => group.models || []); // mesma ordem de linksCars
+ 
+      /* ---------- painel da direita: mostra o carro do modelo ---------- */
+      let activeCars = null;
+      let swapTimerCars = null;
+ 
+      function showModelCars(model) {
+        if (model === activeCars) return;
+        activeCars = model;
+ 
+        linksCars.forEach((link, i) => link.classList.toggle("is-active", flatCars[i] === model));
+        ctaCars.href = model.url || FERRARI_URL;
+ 
+        stageCars.classList.add("is-out"); // some, troca a imagem e reaparece quando ela carregar
+        clearTimeout(swapTimerCars);
+        swapTimerCars = setTimeout(() => {
+          titleCars.textContent = model.name;
+          imgCars.classList.remove("is-missing");
+          imgCars.alt = model.name;
+          imgCars.src = CARS_DIR + model.img;
+        }, 160);
+      }
+ 
+      imgCars.addEventListener("load", () => {
+        stageCars.classList.remove("is-out");
+        if (!prefersReducedMotion) {
+          // o carro desliza da esquerda para a direita
+          imgCars.animate([{ transform: "translateX(-48px)" }, { transform: "none" }], {
+            duration: 700,
+            easing: "cubic-bezier(0.2, 0.75, 0.2, 1)",
+          });
+        }
+      });
+      imgCars.addEventListener("error", () => {
+        imgCars.classList.add("is-missing"); // path ainda não existe: fica só o nome
+        stageCars.classList.remove("is-out");
+      });
+ 
+      linksCars.forEach((link, i) => {
+        const show = () => showModelCars(flatCars[i]);
+        link.addEventListener("mouseenter", show);
+        link.addEventListener("focus", show);
+      });
+ 
+      /* ---------- grupos (só um aberto por vez) ---------- */
+      function setGroupOpenCars(box, open) {
+        box.classList.toggle("is-open", open);
+        box.querySelector(".cars-group__toggle").setAttribute("aria-expanded", String(open));
+      }
+ 
+      menuCars.querySelectorAll(".cars-group__toggle").forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const box = toggle.parentElement;
+          const willOpen = !box.classList.contains("is-open");
+          boxesCars.forEach((other) => setGroupOpenCars(other, false));
+          setGroupOpenCars(box, willOpen);
+          // ao abrir um grupo, o painel mostra o primeiro carro dele
+          if (willOpen) showModelCars(flatCars[linksCars.indexOf(box.querySelector(".cars-model"))]);
+        });
+      });
+ 
+      /* ---------- abrir / sair ---------- */
+      function openCars() {
+        menuCars.inert = false;
+        menuCars.classList.add("is-open");
+        document.documentElement.classList.add("cars-open"); // trava o scroll da página
+        headerCars.inert = mainCars.inert = true; // o foco do teclado fica preso no menu
+        showModelCars(activeCars || flatCars[0]);
+        menuCars.focus({ preventScroll: true }); // foco no menu (sem anel visível); Tab segue para o X
+      }
+ 
+      // esta página só tem o menu, então fechar = voltar para a página inicial
+      function leaveCars() {
+        window.location.href = HOME_URL;
+      }
+ 
+      closeBtnCars.addEventListener("click", leaveCars);
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") leaveCars();
+      });
+ 
+      /* ---------- início: abre no próximo frame para a animação de entrada rodar ---------- */
+      requestAnimationFrame(openCars);
+    </script>
+  </body>
+</html>
+ 

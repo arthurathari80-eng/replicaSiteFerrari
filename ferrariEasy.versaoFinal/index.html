@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Sistema oficial da Ferrari</title>
+  </head>
+ <body>
+    <!--
+      FERRARI — réplica do SENAI
+    -->
+ 
+    <!-- Fonte: Archivo (variável, com eixo de largura) é a alternativa gratuita mais próxima da Ferrari Sans, a fonte da Ferrari tem copyright kkkkkkkkk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap"
+      rel="stylesheet"
+    />
+ 
+    <link rel="stylesheet" href="style.css" />
+  </head>
+ 
+  <body>
+    
+<header class="Header_header">
+  <div class="Header_topbar">
+    <div class="Header_content">
+      <a class="Header_logo" href="index.html" aria-label="Ferrari — Home">
+        <img src="img/logo.png.png" alt="Ferrari" />
+      </a>
+
+      <nav class="Header_nav" aria-label="Main navigation">
+        <ul class="Header_menu">
+          <li><a href="">Racing</a></li>
+          <li><a href="sports-cars.html" aria-current="page">Sports Cars</a></li>
+          <li><a href="">Collections</a></li>
+          <li><a href="">Experiences</a></li>
+          <li><a href="">About Us</a></li>
+        </ul>
+      </nav>
+
+      <div class="Header_search">
+        <a href="">Search</a>
+      </div>
+    </div>
+  </div>
+</header>
+ 
+    <main>
+      <!-- ==HERO SLIDER== -->
+      <section class="hero-slider" id="hero-slider" aria-roledescription="carousel" aria-label="Ferrari highlights">
+        <div class="video-container">
+          <video id="bg-video" autoplay muted playsinline preload="auto"></video>
+        </div>
+ 
+        <div class="hero-content" id="hero-content">
+          <p class="hero-category" id="slide-category">Racing</p>
+          <h1 class="hero-title" id="slide-title">Scuderia Ferrari HP</h1>
+ 
+          <a class="discover-btn" id="slide-link" href="#racing">
+            <span id="slide-cta">Discover Scuderia Ferrari HP</span>
+            <span class="arrow-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+               <!-- SVG: serve para desenhar e exibir gráficos vetoriais (Scalable Vector Graphics) diretamente na página da web -->
+            </span>
+          </a>
+        </div>
+ 
+        <!-- bolinhas: geradas pelo JS a partir da lista slidesVideo -->
+        <div class="slider-dots" id="slider-dots"></div>
+ 
+        <!-- botao de play e pausa-->
+        <div class="controls-right">
+          <button class="play-pause-btn" id="play-pause-btn" type="button" aria-label="Pause video">
+            <svg id="pause-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+            <svg id="play-icon" viewBox="0 0 24 24" aria-hidden="true" style="display: none">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
+      </section>
+ 
+      <!-- ======================= NEWS ======================= -->
+      <section class="news" id="news" aria-roledescription="carousel" aria-label="Latest news">
+        <div class="news__stage">
+          <button class="news__arrow news__arrow--prev" type="button" aria-label="Previous news">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>
+          </button>
+ 
+          <!-- slides: gerados pelo JS a partir da lista slidesNews -->
+          <div class="news__slides"></div>
+ 
+          <button class="news__arrow news__arrow--next" type="button" aria-label="Next news">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+ 
+        <!-- bolinhas: geradas pelo JS -->
+        <div class="news__dots" role="group" aria-label="Choose news"></div>
+      </section>
+<!-- ======================= FEATURED CAR ======================= -->
+      <section class="featured-car">
+        <img 
+          src="media/ferrari-296-gt-modificata.png" 
+          alt="Ferrari 296 GT Modificata" 
+          class="featured-car__image" 
+        />
+        <div class="featured-car__overlay">
+          <h2 class="featured-car__title">FERRARI 296 GT MODIFICATA</h2>
+        </div>
+      </section>
+      <!-- ======================= NEWSLETTER ======================= -->
+    <section class="newsletter">
+      <div class="newsletter__container">
+        <h2 class="newsletter__title">Newsletter</h2>
+        <p class="newsletter__description">Stay up to date with the latest news from the world of Ferrari.</p>
+        <a href="https://www.ferrari.com/en-BR" class="newsletter__button" target="_blank" rel="noopener noreferrer">SUBSCRIBE</a>
+      </div>
+    </section>
+
+    <!-- ======================= FOOTER ======================= -->
+    <footer class="footer">
+      <div class="footer__container">
+        <!-- Colunas de Navegação -->
+        <div class="footer__columns">
+          <div class="footer__column">
+            <h3 class="footer__column-title">RACING</h3>
+            <ul class="footer__list">
+              <li><a href="">Scuderia Ferrari HP</a></li>
+              <li><a href="">SF-24</a></li>
+              <li><a href="">Charles Leclerc</a></li>
+              <li><a href="">Lewis Hamilton</a></li>
+              <li><a href="">Hypercar</a></li>
+              <li><a href="">Competizioni GT</a></li>
+              <li><a href="">HyperClub</a></li>
+              <li><a href="">Esports</a></li>
+              <li><a href="">Scuderia Ferrari Driver Academy</a></li>
+              <li><a href="">Scuderia Ferrari Club</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__column-title">SPORTS CARS</h3>
+            <ul class="footer__list">
+              <li><a href="">Range</a></li>
+              <li><a href="">Configure your Ferrari</a></li>
+              <li><a href="">MyFerrari</a></li>
+              <li><a href="">Pre-owned</a></li>
+              <li><a href="">Dealers</a></li>
+              <li><a href="">Recall Information</a></li>
+              <li><a href="">TechInfo</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__column-title">COLLECTIONS</h3>
+            <ul class="footer__list">
+              <li><a href="">Men</a></li>
+              <li><a href="">Women</a></li>
+              <li><a href="">Kids</a></li>
+              <li><a href="">Shoes</a></li>
+              <li><a href="">Eyewear</a></li>
+              <li><a href="">Collectibles</a></li>
+              <li><a href="">Scuderia Ferrari Selection</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__column-title">EXPERIENCES</h3>
+            <ul class="footer__list">
+              <li><a href="">Corse Clienti</a></li>
+              <li><a href="">Ferrari Esports Series</a></li>
+              <li><a href="">Ristorante Cavallino</a></li>
+              <li><a href="">Ferrari Museums</a></li>
+              <li><a href="">Ferrari World Abu Dhabi</a></li>
+              <li><a href="">Ferrari Land Barcelona</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__column">
+            <h3 class="footer__column-title">ABOUT US</h3>
+            <ul class="footer__list">
+              <li><a href="">Corporate</a></li>
+              <li><a href="">Sustainability</a></li>
+              <li><a href="">Media Centre</a></li>
+              <li><a href="">News</a></li>
+              <li><a href="">Magazine</a></li>
+              <li><a href="">History</a></li>
+              <li><a href="">Join us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="footer__divider" />
+
+        <!-- Redes Sociais -->
+        <div class="footer__socials">
+          <a href="" class="footer__social-item">
+            <span class="footer__social-icon">f</span> FACEBOOK <span class="footer__social-plus">+</span>
+          </a>
+          <a href="" class="footer__social-item">
+            <span class="footer__social-icon">📷</span> INSTAGRAM <span class="footer__social-plus">+</span>
+          </a>
+          <a href="" class="footer__social-item">
+            <span class="footer__social-icon">in</span> LINKEDIN <span class="footer__social-plus">+</span>
+          </a>
+          <a href="" class="footer__social-item">
+            <span class="footer__social-icon">🎵</span> TIK TOK
+          </a>
+          <a href="" class="footer__social-item">
+            <span class="footer__social-icon">👾</span> TWITCH
+          </a>
+          <a href="" class="footer__social-item">
+            <span class="footer__social-icon">𝕏</span> X <span class="footer__social-plus">+</span>
+          </a>
+          <a href="" class="footer__social-item">
+            <span class="footer__social-icon">▶</span> YOUTUBE
+          </a>
+        </div>
+      </div>
+    </footer>
+    </main>
+ 
+    <!-- =========================================================
+         SCRIPT 1 — varias coisas usadas pelos dois carrosséis
+         ========================================================= -->
+    <!-- A troca de slides e a barra de reprodução nos botões deste código (JS) foram feitas com IA. -->
+    <script>
+      const FERRARI_URL = "http://127.0.0.1:5500/ferrariEasy.versaoFinal/index.html"; // destino de todos os "Read more"
+ 
+      // índice circular: wrapIndex(-1, 4) => 3 | wrapIndex(4, 4) => 0
+      const wrapIndex = (i, total) => (i + total) % total;
+ 
+      // cria as bolinhas com anel de progresso (mesmo SVG no hero e nas notícias)
+      // cls: "dot" (hero) ou "news-dot" (notícias) | size: tamanho do viewBox do anel
+      function createDots(container, cls, labels, size) {
+        const c = size / 2;
+        const r = c - 1;
+        container.innerHTML = labels
+          .map(
+            (label) => `
+              <button class="${cls}" type="button" aria-label="${label}">
+                <span class="${cls}__core"></span>
+                <svg class="${cls}__ring" viewBox="0 0 ${size} ${size}" aria-hidden="true">
+                  <circle class="${cls}__track" cx="${c}" cy="${c}" r="${r}" />
+                  <circle class="${cls}__progress" cx="${c}" cy="${c}" r="${r}" />
+                </svg>
+              </button>`
+          )
+          .join("");
+        return Array.from(container.children);
+      }
+ 
+      // marca a bolinha ativa
+      function setActiveDot(dots, index) {
+        dots.forEach((dot, i) => {
+          dot.classList.toggle("is-active", i === index);
+          dot.setAttribute("aria-current", i === index ? "true" : "false");
+        });
+      }
+    </script>
+ 
+    <!-- =========================================================
+         SCRIPT 2 — HERO (vídeo de fundo) - variáveis terminam com "Video"
+         ========================================================= -->
+    <script>
+      /* Troque os caminhos locais se mudar as pastas.
+         O fallback só é usado se o arquivo local não for encontrado. */
+      const slidesVideo = [
+        {
+          category: "Racing",
+          title: "Scuderia Ferrari HP",
+          cta: "Discover Scuderia Ferrari HP",
+          link: "#racing",
+          local: "media/videoplayback.mp4",
+          fallback:
+            "https://assets.mixkit.co/videos/preview/mixkit-sports-car-driving-on-a-road-at-sunset-41440-large.mp4",
+          zoom: 1.2,
+        },
+        {
+          category: "Sports Cars",
+          title: "Start Your Engine",
+          cta: "Discover the Ferrari line up",
+          link: "#sports-cars",
+          local: "media/sportsCar.mp4",
+          fallback:
+            "https://assets.mixkit.co/videos/preview/mixkit-red-sports-car-driving-on-a-track-41438-large.mp4",
+          zoom: 1,
+        },
+        {
+          category: "Collections",
+          title: "FW 26 Runway Collection",
+          cta: "Discover the collection",
+          link: "#collections",
+          local: "media/collection.mp4",
+          fallback:
+            "https://assets.mixkit.co/videos/preview/mixkit-model-walking-on-a-runway-41421-large.mp4",
+          zoom: 1,
+        },
+      ];
+ 
+      const DEFAULT_DURATION_VIDEO = 8; // segundos, caso o vídeo não informe a duração
+ 
+      const sliderVideo = document.getElementById("hero-slider");
+      const bgVideo = document.getElementById("bg-video");
+      const contentVideo = document.getElementById("hero-content");
+      const categoryVideo = document.getElementById("slide-category");
+      const titleVideo = document.getElementById("slide-title");
+      const ctaVideo = document.getElementById("slide-cta");
+      const linkVideo = document.getElementById("slide-link");
+      const playBtnVideo = document.getElementById("play-pause-btn");
+      const playIconVideo = document.getElementById("play-icon");
+      const pauseIconVideo = document.getElementById("pause-icon");
+ 
+      const dotsVideo = createDots(
+        document.getElementById("slider-dots"),
+        "dot",
+        slidesVideo.map((slide, i) => `Slide ${i + 1}: ${slide.category}`),
+        24
+      );
+ 
+      let currentVideo = 0;
+      let fallbackUsedVideo = false;
+      let swappingVideo = false; // true durante a transição (evita trocar duas vezes seguidas)
+ 
+      /* ---------- vídeo ---------- */
+      function safePlayVideo() {
+        const attempt = bgVideo.play();
+        if (attempt) attempt.catch(() => {}); // autoplay bloqueado: ignora silenciosamente
+      }
+ 
+      function loadSlideVideo(slide) {
+        fallbackUsedVideo = false;
+        bgVideo.style.transform = `scale(${slide.zoom || 1})`;
+        bgVideo.src = slide.local;
+        bgVideo.load();
+        safePlayVideo();
+      }
+ 
+      // textos + vídeo do slide (usado no início e a cada troca)
+      function renderSlideVideo(slide) {
+        categoryVideo.textContent = slide.category;
+        titleVideo.textContent = slide.title;
+        ctaVideo.textContent = slide.cta;
+        linkVideo.href = slide.link;
+        loadSlideVideo(slide);
+      }
+ 
+      // ícone de play/pause, aria-label e congelamento do anel seguem o estado real do vídeo
+      function syncPlayStateVideo(playing) {
+        sliderVideo.classList.toggle("is-paused", !playing);
+        pauseIconVideo.style.display = playing ? "block" : "none";
+        playIconVideo.style.display = playing ? "none" : "block";
+        playBtnVideo.setAttribute("aria-label", playing ? "Pause video" : "Play video");
+      }
+ 
+      /* ---------- anel de progresso (dura o mesmo tempo do vídeo) ---------- */
+      function restartRingVideo() {
+        const dot = dotsVideo[currentVideo];
+        const ring = dot.querySelector(".dot__progress");
+        const duration =
+          Number.isFinite(bgVideo.duration) && bgVideo.duration > 0
+            ? bgVideo.duration
+            : DEFAULT_DURATION_VIDEO;
+ 
+        dot.style.setProperty("--video-duration", `${duration}s`);
+        ring.style.animation = "none";
+        void ring.offsetWidth; // força o reinício da animação
+        ring.style.animation = "";
+      }
+ 
+      /* ---------- troca de slide ---------- */
+      function goToSlideVideo(index) {
+        if (index === currentVideo || swappingVideo) return;
+        swappingVideo = true;
+        currentVideo = index;
+        setActiveDot(dotsVideo, currentVideo);
+ 
+        contentVideo.classList.add("is-hidden");
+        bgVideo.classList.add("is-swapping");
+ 
+        setTimeout(() => {
+          renderSlideVideo(slidesVideo[index]);
+          contentVideo.classList.remove("is-hidden");
+          swappingVideo = false;
+        }, 350);
+      }
+ 
+      const nextSlideVideo = () => goToSlideVideo(wrapIndex(currentVideo + 1, slidesVideo.length));
+      const prevSlideVideo = () => goToSlideVideo(wrapIndex(currentVideo - 1, slidesVideo.length));
+ 
+      /* ---------- eventos ---------- */
+      bgVideo.addEventListener("error", () => {
+        const slide = slidesVideo[currentVideo];
+        if (!fallbackUsedVideo && slide.fallback) {
+          fallbackUsedVideo = true;
+          bgVideo.src = slide.fallback;
+          bgVideo.load();
+          safePlayVideo();
+        }
+      });
+      bgVideo.addEventListener("canplay", () => bgVideo.classList.remove("is-swapping"));
+      bgVideo.addEventListener("loadedmetadata", restartRingVideo);
+      bgVideo.addEventListener("play", () => syncPlayStateVideo(true));
+      bgVideo.addEventListener("pause", () => syncPlayStateVideo(false));
+      bgVideo.addEventListener("ended", nextSlideVideo); // o vídeo acabou => próximo slide
+ 
+      dotsVideo.forEach((dot, i) => dot.addEventListener("click", () => goToSlideVideo(i)));
+ 
+      playBtnVideo.addEventListener("click", () => {
+        if (bgVideo.paused) safePlayVideo();
+        else bgVideo.pause();
+      });
+ 
+      // setas do teclado: só valem enquanto o hero está visível (e o foco não está nas notícias)
+      document.addEventListener("keydown", (e) => {
+        const heroVisible = sliderVideo.getBoundingClientRect().bottom > window.innerHeight * 0.4;
+        if (!heroVisible || e.target.closest("#news")) return;
+        if (e.key === "ArrowRight") nextSlideVideo();
+        if (e.key === "ArrowLeft") prevSlideVideo();
+      });
+ 
+      /* ---------- início ---------- */
+      renderSlideVideo(slidesVideo[0]);
+      setActiveDot(dotsVideo, currentVideo);
+    </script>
+ 
+    <!-- =========================================================
+         SCRIPT 3 — NEWS (carrossel de notícias) - variáveis terminam com "News"
+         - textos: cada caractere sobe (de baixo para cima) um de cada vez
+         - imagens: revelam da esquerda para a direita
+         - avança sozinho; pausa com o mouse em cima ou foco no teclado (IA kkkkkk)
+         ========================================================= */ -->
+         
+    <script>
+      /* Uma lista alimenta tudo: o HTML dos slides e as bolinhas.
+         Para trocar uma notícia, edite só aqui. Use "url" para um link próprio;
+         sem "url", o "Read more" usa FERRARI_URL. Os paths das imagens são imaginários por enquanto. */
+      const slidesNews = [
+        {
+          title: "Twenty points from Baku",
+          text: "Scuderia Ferrari HP leave the Azerbaijan Grand Prix with 20 points to consolidate its second place in the Constructors’ Championship, courtesy of Charles Leclerc finishing fourth and Lewis Hamilton sixth.",
+          img: "media/rullo_mob_260926_R15_AZERBAIJAN_DP_VA2_1196.avif",
+          alt: "Ferrari Formula 1 car on the Baku street circuit",
+        },
+        {
+          title: "Ferrari tenth at Fuji",
+          text: "Ferrari leaves Japan with tenth place for the number 51 499P as its best result at the Fuji 6 Hours, the third-to-last round of the FIA WEC 2026.",
+          img: "media/gtw2-wec-fuji-2026-race.avif",
+          alt: "Ferrari 499P number 51 on track at Fuji",
+        },
+        {
+          title: "Ferrari CZ26 debuts at Pebble Beach",
+          text: "A bespoke new Special Projects creation makes its world debut in Monterey",
+          img: "media/FERRARI_CZ26_20260814_RULLO2.avif",
+          alt: "Ferrari CZ26 Special Projects car",
+        },
+        {
+          title: "Ferrari Hypersail starts its crew formation: Giulia Conti and Shannon Falcone join the project led by Enrico Voltolini",
+          text: "Ferrari Hypersail marks a key milestone in its journey, announcing the first Sailing Team members who will participate in sea trials and the future racing program for the 100-foot full-foiling monohull.",
+          img: "media/hypersail-team-RULLO2.avif",
+          alt: "Ferrari Hypersail sailing team member",
+        },
+      ];
+ 
+      /* tempo total (ms) que cada tipo de texto leva para "escrever".
+         o passo por caractere é limitado para textos longos não demorarem */
+      const SPLIT_NEWS = {
+        title: { base: 100, budget: 520, maxStep: 24 },
+        desc: { base: 260, budget: 640, maxStep: 12 },
+      };
+ 
+      const sectionNews = document.getElementById("news");
+      const stageNews = sectionNews.querySelector(".news__stage");
+      const trackNews = sectionNews.querySelector(".news__slides");
+      const reduceMotionNews = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ 
+      /* ---------- monta os slides e as bolinhas ---------- */
+      trackNews.innerHTML = slidesNews
+        .map(
+          (slide, i) => `
+            <article class="news__slide" aria-roledescription="slide" aria-label="${i + 1} of ${slidesNews.length}">
+              <div class="news__text">
+                <h2 class="news__title" data-split="title">${slide.title}</h2>
+                <p class="news__desc" data-split="desc">${slide.text}</p>
+                <a class="news__more" href="${slide.url || FERRARI_URL}" target="_blank" rel="noopener noreferrer">
+                  <span>Read more</span>
+                  <span class="news__more-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></svg>
+                  </span>
+                </a>
+              </div>
+              <figure class="news__media">
+                <img src="${slide.img}" alt="${slide.alt}" loading="lazy" />
+              </figure>
+            </article>`
+        )
+        .join("");
+ 
+      const articlesNews = Array.from(trackNews.children);
+      const dotsNews = createDots(
+        sectionNews.querySelector(".news__dots"),
+        "news-dot",
+        slidesNews.map((slide, i) => `News ${i + 1}`),
+        20
+      );
+ 
+      /* ---------- divide o texto em palavras > caracteres ---------- */
+      function splitCharsNews(el) {
+        const cfg = SPLIT_NEWS[el.dataset.split] || SPLIT_NEWS.desc;
+        const text = el.textContent.trim().replace(/\s+/g, " ");
+        const count = text.replace(/ /g, "").length;
+        const step = Math.min(cfg.maxStep, cfg.budget / Math.max(count, 1));
+ 
+        // texto original só para leitores de tela
+        const sr = document.createElement("span");
+        sr.className = "sr-only";
+        sr.textContent = text;
+ 
+        const visual = document.createElement("span");
+        visual.className = "split";
+        visual.setAttribute("aria-hidden", "true");
+ 
+        let i = 0;
+        const words = text.split(" ");
+        words.forEach((word, w) => {
+          const wordEl = document.createElement("span");
+          wordEl.className = "word";
+          Array.from(word).forEach((ch) => {
+            const c = document.createElement("span");
+            c.className = "char";
+            c.textContent = ch;
+            c.style.setProperty("--i", i++);
+            wordEl.appendChild(c);
+          });
+          visual.appendChild(wordEl);
+          if (w < words.length - 1) visual.appendChild(document.createTextNode(" "));
+        });
+ 
+        el.textContent = "";
+        el.append(sr, visual);
+        el.style.setProperty("--base", `${cfg.base}ms`);
+        el.style.setProperty("--step", `${step.toFixed(2)}ms`);
+      }
+ 
+      sectionNews.querySelectorAll("[data-split]").forEach(splitCharsNews);
+ 
+      /* imagens que não existem (paths imaginários): mantém o bloco cinza */
+      sectionNews.querySelectorAll(".news__media img").forEach((img) => {
+        const markMissing = () => img.classList.add("is-missing");
+        img.addEventListener("error", markMissing);
+        if (img.complete && img.naturalWidth === 0) markMissing();
+      });
+ 
+      /* ---------- troca de slide ---------- */
+      let currentNews = -1;
+ 
+      function showNews(index) {
+        if (index === currentNews) return;
+ 
+        const leaving = articlesNews[currentNews];
+        if (leaving) {
+          leaving.classList.remove("is-active");
+          leaving.classList.add("is-leaving");
+          clearTimeout(leaving._leaveTimer);
+          leaving._leaveTimer = setTimeout(() => leaving.classList.remove("is-leaving"), 350);
+        }
+ 
+        const entering = articlesNews[index];
+        clearTimeout(entering._leaveTimer);
+        entering.classList.remove("is-leaving");
+        entering.classList.add("is-active");
+ 
+        setActiveDot(dotsNews, index);
+        currentNews = index;
+      }
+ 
+      const nextNews = () => showNews(wrapIndex(currentNews + 1, slidesNews.length));
+      const prevNews = () => showNews(wrapIndex(currentNews - 1, slidesNews.length));
+ 
+      /* ---------- eventos ---------- */
+      sectionNews.querySelector(".news__arrow--next").addEventListener("click", nextNews);
+      sectionNews.querySelector(".news__arrow--prev").addEventListener("click", prevNews);
+      dotsNews.forEach((dot, i) => dot.addEventListener("click", () => showNews(i)));
+ 
+      /* o anel de progresso terminou => próximo slide (sem autoplay se o usuário pediu menos movimento) */
+      if (!reduceMotionNews) {
+        sectionNews.addEventListener("animationend", (e) => {
+          if (e.animationName === "newsRing") nextNews();
+        });
+      }
+ 
+      /* teclado (só quando o foco está dentro da seção) */
+      sectionNews.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") nextNews();
+        if (e.key === "ArrowLeft") prevNews();
+      });
+ 
+      /* swipe no celular */
+      let startXNews = null;
+      stageNews.addEventListener("touchstart", (e) => (startXNews = e.touches[0].clientX), { passive: true });
+      stageNews.addEventListener("touchend", (e) => {
+        if (startXNews === null) return;
+        const dx = e.changedTouches[0].clientX - startXNews;
+        startXNews = null;
+        if (Math.abs(dx) > 50) (dx < 0 ? nextNews : prevNews)();
+      });
+ 
+      /* começa só quando a seção aparece na tela; pausa o progresso quando sai */
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(
+          ([entry]) => {
+            sectionNews.classList.toggle("is-inview", entry.isIntersecting);
+            if (entry.isIntersecting && currentNews === -1) showNews(0);
+          },
+          { threshold: 0.35 }
+        ).observe(sectionNews);
+      } else {
+        sectionNews.classList.add("is-inview");
+        showNews(0);
+      }
+    </script>
+  </body>
+</html>

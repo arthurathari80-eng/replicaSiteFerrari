@@ -1,0 +1,1575 @@
+/* =========================================================
+   FERRARI — réplica
+   Tokens, header fixo e hero slider em tela cheia
+   ========================================================= */
+ 
+:root {
+  --f-font: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ 
+  --f-white: #ffffff;
+  --f-black: #000000;
+  --f-bar: #1a1a1a; /* barra do menu */
+  --f-muted: rgba(255, 255, 255, 0.6);
+  --f-red: #ff2800; /* Rosso Corsa */
+ 
+  --header-height: 40px;
+ 
+  /* cor do anel de progresso da bolinha ativa.
+     troque para var(--f-red) se quiser o anel vermelho */
+  --dot-progress: var(--f-white);
+ 
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+ 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+ 
+html,
+body {
+  height: 100%;
+}
+ 
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--f-black);
+  color: var(--f-white);
+  font-family: var(--f-font);
+  font-size: 13px;
+  line-height: 1.5;
+  letter-spacing: 0.015em;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ 
+img {
+  display: block;
+  max-width: 100%;
+}
+ 
+button {
+  font-family: inherit;
+}
+ 
+:focus-visible {
+  outline: 2px solid var(--f-white);
+  outline-offset: 3px;
+}
+ 
+/* =========================================================
+   HEADER
+   ========================================================= */
+ 
+.Header_header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 700;
+}
+ 
+.Header_topbar {
+  height: var(--header-height);
+  background: var(--f-bar);
+}
+ 
+.Header_content {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 24px;
+  gap: 40px;
+}
+ 
+.Header_logo {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+ 
+.Header_logo img {
+  height: 26px;
+  width: auto;
+}
+ 
+.Header_nav {
+  flex: 1 1 auto;
+}
+ 
+.Header_menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 2.6vw, 46px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ 
+.Header_search {
+  margin-left: auto;
+  flex: 0 0 auto;
+}
+ 
+.Header_menu a,
+.Header_search a {
+  position: relative;
+  display: inline-block;
+  padding: 11px 0;
+  color: var(--f-white);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  white-space: nowrap;
+  transition: opacity 200ms var(--ease);
+}
+ 
+.Header_menu a:hover,
+.Header_search a:hover {
+  opacity: 0.85;
+}
+ 
+/* sublinhado que cresce no hover */
+.Header_menu a::after,
+.Header_search a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 7px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms var(--ease);
+}
+ 
+.Header_menu a:hover::after,
+.Header_search a:hover::after {
+  transform: scaleX(1);
+}
+ 
+/* =========================================================
+   HERO SLIDER
+   ========================================================= */
+ 
+.hero-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+ 
+.video-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  background: var(--f-black);
+}
+ 
+/* gradiente que escurece topo e base para dar contraste ao texto */
+.video-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.55) 0%,
+    rgba(0, 0, 0, 0.12) 26%,
+    rgba(0, 0, 0, 0) 45%,
+    rgba(0, 0, 0, 0.45) 78%,
+    rgba(0, 0, 0, 0.85) 100%
+  );
+}
+ 
+#bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity 450ms var(--ease), transform 800ms var(--ease);
+}
+ 
+#bg-video.is-swapping {
+  opacity: 0;
+}
+ 
+/* ---------- texto do slide ---------- */
+ 
+.hero-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(88px, 11vh, 132px);
+  z-index: 10;
+  padding: 0 24px;
+  text-align: center;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 400ms var(--ease), transform 400ms var(--ease);
+}
+ 
+.hero-content.is-hidden {
+  opacity: 0;
+  transform: translateY(16px);
+}
+ 
+.hero-category {
+  margin: 0 0 12px;
+  font-size: clamp(14px, 1.1vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+}
+ 
+.hero-title {
+  margin: 0 0 30px;
+  font-size: clamp(30px, 4.4vw, 62px);
+  font-weight: 700;
+  line-height: 1.02;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.45);
+}
+ 
+.discover-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--f-white);
+  text-decoration: none;
+  font-size: clamp(11px, 0.85vw, 14px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+ 
+.arrow-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease),
+    color 300ms var(--ease);
+}
+ 
+.arrow-icon svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+ 
+.discover-btn:hover .arrow-icon {
+  background: var(--f-white);
+  border-color: var(--f-white);
+  color: var(--f-black);
+}
+ 
+/* ---------- bolinhas de navegação ---------- */
+ 
+.slider-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(30px, 4.2vh, 46px);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+}
+ 
+.dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+.dot__core {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--f-muted);
+  transition: background-color 300ms var(--ease), opacity 300ms var(--ease),
+    transform 300ms var(--ease);
+}
+ 
+.dot:hover .dot__core {
+  background: var(--f-white);
+}
+ 
+.dot.is-active .dot__core {
+  opacity: 0;
+  transform: scale(0.4);
+}
+ 
+.dot__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* começa o progresso no topo */
+  opacity: 0;
+  transition: opacity 300ms var(--ease);
+}
+ 
+.dot.is-active .dot__ring {
+  opacity: 1;
+}
+ 
+.dot__track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 1.2;
+}
+ 
+.dot__progress {
+  fill: none;
+  stroke: var(--dot-progress);
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 69.12; /* 2 * PI * r, com r = 11 */
+  stroke-dashoffset: 69.12;
+}
+ 
+.dot.is-active .dot__progress {
+  animation: dotProgress var(--video-duration, 8s) linear forwards;
+}
+ 
+/* o anel congela junto com o vídeo */
+.hero-slider.is-paused .dot.is-active .dot__progress {
+  animation-play-state: paused;
+}
+ 
+@keyframes dotProgress {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+ 
+/* ---------- play / pause ---------- */
+ 
+.controls-right {
+  position: absolute;
+  right: clamp(16px, 2.2vw, 40px);
+  bottom: clamp(28px, 4vh, 44px);
+  z-index: 10;
+}
+ 
+.play-pause-btn {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  color: var(--f-white);
+  cursor: pointer;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease),
+    color 300ms var(--ease);
+}
+ 
+.play-pause-btn:hover {
+  background: var(--f-white);
+  border-color: var(--f-white);
+  color: var(--f-black);
+}
+ 
+.play-pause-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: currentColor;
+}
+ 
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+ 
+@media (max-width: 900px) {
+  .Header_nav {
+    display: none;
+  }
+ 
+  .Header_content {
+    padding: 0 16px;
+    gap: 16px;
+  }
+ 
+  .hero-content {
+    bottom: 104px;
+  }
+ 
+  .hero-title {
+    letter-spacing: 0.01em;
+  }
+ 
+  .arrow-icon {
+    width: 32px;
+    height: 32px;
+  }
+ 
+  .slider-dots {
+    bottom: 34px;
+  }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* =========================================================
+   NEWS — carrossel de notícias (abaixo do hero)
+   ========================================================= */
+ 
+.news {
+  --news-interval: 7s; /* tempo que cada notícia fica na tela */
+  --news-red: #da291c;
+  --news-wide: 118%; /* largura da fonte nos títulos (Archivo variável) */
+ 
+  position: relative;
+  z-index: 2;
+  background: var(--f-white);
+  color: var(--f-black);
+  padding: calc(var(--header-height) + 48px) 24px 72px;
+}
+ 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+ 
+.news__stage {
+  position: relative;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+ 
+/* todos os slides ocupam a mesma célula; só o ativo aparece */
+.news__slides {
+  display: grid;
+  padding-inline: 72px;
+}
+ 
+.news__slide {
+  grid-area: 1 / 1;
+  justify-self: center;
+  width: 100%;
+  max-width: 1120px;
+  display: grid;
+  grid-template-columns: minmax(0, 445px) minmax(0, 530px);
+  justify-content: center;
+  column-gap: clamp(32px, 7.5vw, 144px);
+  align-items: center;
+ 
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+ 
+.news__slide.is-active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
+ 
+/* slide que está saindo: some com fade curto */
+.news__slide.is-leaving {
+  visibility: visible;
+  opacity: 0;
+  transition: opacity 300ms var(--ease);
+}
+ 
+/* ---------- textos ---------- */
+ 
+.news__title {
+  margin: 0 0 30px;
+  font-size: clamp(22px, 1.56vw, 32px);
+  font-weight: 600;
+  font-stretch: var(--news-wide);
+  line-height: 1.13;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+}
+ 
+.news__desc {
+  margin: 0 0 30px;
+  font-size: clamp(13px, 0.8vw, 16px);
+  font-weight: 500;
+  font-stretch: 108%;
+  line-height: 1.3;
+  letter-spacing: 0.005em;
+}
+ 
+/* caractere por caractere, de baixo para cima */
+.news .word {
+  display: inline-block;
+  white-space: nowrap;
+}
+ 
+.news .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.75em);
+}
+ 
+.news__slide.is-active .char {
+  opacity: 1;
+  transform: none;
+  transition: opacity 350ms ease, transform 550ms cubic-bezier(0.2, 0.75, 0.2, 1);
+  transition-delay: calc(var(--base, 0ms) + var(--i) * var(--step, 10ms));
+}
+ 
+/* durante o fade-out o texto fica como está (sem reanimar ao contrário) */
+.news__slide.is-leaving .char {
+  opacity: 1;
+  transform: none;
+}
+ 
+/* ---------- Read more ---------- */
+ 
+.news__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--f-black);
+  text-decoration: none;
+  font-size: clamp(12px, 0.72vw, 14px);
+  font-weight: 500;
+  font-stretch: 110%;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+ 
+  opacity: 0;
+  transform: translateY(14px);
+}
+ 
+.news__slide.is-active .news__more {
+  opacity: 1;
+  transform: none;
+  transition: opacity 500ms ease 720ms, transform 500ms cubic-bezier(0.2, 0.75, 0.2, 1) 720ms;
+}
+ 
+.news__slide.is-leaving .news__more {
+  opacity: 1;
+  transform: none;
+}
+ 
+.news__more-icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid #9b9b9b;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease),
+    color 300ms var(--ease);
+}
+ 
+.news__more-icon svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+ 
+.news__more:hover .news__more-icon {
+  background: var(--f-black);
+  border-color: var(--f-black);
+  color: var(--f-white);
+}
+ 
+/* ---------- imagem: revela da esquerda para a direita ---------- */
+ 
+.news__media {
+  margin: 0;
+  aspect-ratio: 530 / 597;
+  background: #ececec;
+  overflow: hidden;
+  clip-path: inset(0 100% 0 0);
+}
+ 
+.news__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateX(-18%) scale(1.18);
+}
+ 
+.news__media img.is-missing {
+  visibility: hidden;
+}
+ 
+.news__slide.is-active .news__media {
+  clip-path: inset(0 0 0 0);
+  transition: clip-path 900ms cubic-bezier(0.77, 0, 0.18, 1);
+}
+ 
+.news__slide.is-active .news__media img {
+  transform: none;
+  transition: transform 1100ms cubic-bezier(0.22, 0.8, 0.2, 1);
+}
+ 
+.news__slide.is-leaving .news__media {
+  clip-path: inset(0 0 0 0);
+}
+ 
+.news__slide.is-leaving .news__media img {
+  transform: none;
+}
+ 
+/* ---------- setas ---------- */
+ 
+.news__arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--f-black);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: opacity 200ms var(--ease);
+}
+ 
+.news__arrow:hover {
+  opacity: 0.55;
+}
+ 
+.news__arrow--prev {
+  left: 0;
+}
+ 
+.news__arrow--next {
+  right: 0;
+}
+ 
+.news__arrow svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+ 
+.news .news__arrow:focus-visible,
+.news .news-dot:focus-visible,
+.news .news__more:focus-visible {
+  outline: 2px solid var(--f-black);
+  outline-offset: 3px;
+}
+ 
+/* ---------- bolinhas com anel de progresso ---------- */
+ 
+.news__dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 64px;
+}
+ 
+.news-dot {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+ 
+.news-dot__core {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--f-black);
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease);
+}
+ 
+.news-dot.is-active .news-dot__core {
+  opacity: 0;
+  transform: scale(0.3);
+}
+ 
+.news-dot__ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg); /* progresso começa no topo */
+  opacity: 0;
+  transition: opacity 250ms var(--ease);
+}
+ 
+.news-dot.is-active .news-dot__ring {
+  opacity: 1;
+}
+ 
+.news-dot__track,
+.news-dot__progress {
+  fill: none;
+  stroke-width: 1.6;
+}
+ 
+.news-dot__track {
+  stroke: #e4e4e4;
+}
+ 
+.news-dot__progress {
+  stroke: var(--news-red);
+  stroke-dasharray: 56.55; /* 2 * PI * r, com r = 9 */
+  stroke-dashoffset: 56.55;
+}
+ 
+.news-dot.is-active .news-dot__progress {
+  animation: newsRing var(--news-interval) linear forwards;
+}
+ 
+@keyframes newsRing {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+ 
+/* pausa o progresso: mouse em cima, foco no teclado ou seção fora da tela */
+.news:hover .news-dot.is-active .news-dot__progress {
+  animation-play-state: paused;
+}
+ 
+.news:has(:focus-visible) .news-dot.is-active .news-dot__progress {
+  animation-play-state: paused;
+}
+ 
+.news:not(.is-inview) .news-dot.is-active .news-dot__progress {
+  animation-play-state: paused;
+}
+ 
+/* ---------- responsivo ---------- */
+ 
+@media (max-width: 900px) {
+  .news {
+    padding: calc(var(--header-height) + 24px) 20px 56px;
+  }
+ 
+  .news__slides {
+    padding-inline: 0;
+  }
+ 
+  .news__slide {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 28px;
+    align-items: start;
+    max-width: 560px;
+  }
+ 
+  .news__media {
+    order: -1;
+  }
+ 
+  .news__title {
+    font-size: 24px;
+  }
+ 
+  .news__desc {
+    font-size: 14px;
+  }
+ 
+  .news__more {
+    font-size: 12px;
+  }
+ 
+  .news__arrow {
+    display: none; /* no celular navega por swipe e pelas bolinhas */
+  }
+ 
+  .news__dots {
+    margin-top: 40px;
+  }
+}
+ 
+/* movimento reduzido: tudo aparece direto e sem autoplay */
+@media (prefers-reduced-motion: reduce) {
+  .news .char,
+  .news__more {
+    opacity: 1;
+    transform: none;
+    transition: none !important;
+  }
+ 
+  .news__media {
+    clip-path: none;
+    transition: none !important;
+  }
+ 
+  .news__media img {
+    transform: none;
+    transition: none !important;
+  }
+ 
+  .news-dot__progress {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+}
+
+/* =========================================================
+   FEATURED CAR — Seção de destaque do modelo (Full Screen / Banner)
+   ========================================================= */
+
+.featured-car {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ocupa a altura total da tela */
+  min-height: 500px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-car__image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz a imagem preencher toda a área sem distorcer */
+  z-index: 1;
+}
+
+.featured-car__overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end; /* Posiciona o título na parte inferior da imagem */
+  justify-content: center;
+  padding: 48px 24px;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.2) 40%,
+    transparent 100%
+  ); /* Sombra em degradê para dar destaque e leitura ao texto */
+}
+
+.featured-car__title {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 56px);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--f-white);
+  text-align: center;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .featured-car {
+    height: 70vh; /* Reduz ligeiramente em telas móveis */
+  }
+
+  .featured-car__overlay {
+    padding: 32px 16px;
+  }
+}
+
+/* =========================================================
+   NEWSLETTER SECTION
+   ========================================================= */
+
+.newsletter {
+  background-color: #2b2b2b;
+  padding: 80px 20px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.newsletter__container {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.newsletter__title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.05em;
+}
+
+.newsletter__description {
+  font-size: 14px;
+  color: #cccccc;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+
+.newsletter__button {
+  display: inline-block;
+  background-color: #d9231d;
+  color: #ffffff;
+  padding: 16px 48px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.newsletter__button:hover {
+  background-color: #b01a15;
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   FOOTER SECTION
+   ========================================================= */
+
+.footer {
+  background-color: #181818;
+  color: #ffffff;
+  padding: 80px 20px 40px 20px;
+  font-family: inherit;
+}
+
+.footer__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__columns {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 32px;
+  margin-bottom: 60px;
+}
+
+.footer__column-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-bottom: 24px;
+  color: #ffffff;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__list li {
+  margin-bottom: 12px;
+}
+
+.footer__list a {
+  color: #a0a0a0;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: color 0.2s ease;
+}
+
+.footer__list a:hover {
+  color: #ffffff;
+}
+
+.footer__divider {
+  border: none;
+  border-top: 1px solid #2e2e2e;
+  margin-bottom: 40px;
+}
+
+/* Redes Sociais do Rodapé */
+.footer__socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px 48px;
+}
+
+.footer__social-item {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: opacity 0.2s ease;
+}
+
+.footer__social-item:hover {
+  opacity: 0.7;
+}
+
+.footer__social-icon {
+  font-size: 12px;
+}
+
+.footer__social-plus {
+  margin-left: 2px;
+  font-weight: 400;
+  color: #a0a0a0;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .footer__columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__columns {
+    grid-template-columns: repeat(1, 1fr);
+    text-align: center;
+  }
+
+  .footer__socials {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
+/* =========================================================
+   FERRARI — página Sports Cars (menu em tela cheia)
+   Usa os tokens do style.css: --f-font, --f-white, --f-bar, --f-red, --ease
+   Estrutura: [trilho 72px] [navegação] [painel do carro]
+   ========================================================= */
+ 
+/* trava o scroll da página enquanto o menu está aberto */
+html.cars-open {
+  overflow: hidden;
+}
+ 
+.cars-menu {
+  --cars-rail-w: 72px;
+  --cars-rail-bg: #141414;
+  --cars-bg: var(--f-bar);
+  --cars-muted: rgba(255, 255, 255, 0.7);
+  --cars-row: 40px; /* altura de cada linha de item */
+  --cars-out: cubic-bezier(0.2, 0.75, 0.2, 1);
+ 
+  position: fixed;
+  inset: 0;
+  z-index: 900; /* acima do header (700) */
+  display: grid;
+  grid-template-columns: var(--cars-rail-w) clamp(480px, 35vw, 700px) minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--cars-bg);
+  color: var(--f-white);
+  font-family: var(--f-font);
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: 104%;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+ 
+  /* fechado (estado inicial, com o atributo inert) */
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 350ms var(--ease), visibility 0s linear 350ms;
+}
+ 
+.cars-menu:focus {
+  outline: none; /* o foco inicial fica no menu, sem anel */
+}
+ 
+.cars-menu.is-open {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 350ms var(--ease), visibility 0s;
+}
+ 
+/* =========================================================
+   TRILHO (logo + botão fechar)
+   ========================================================= */
+ 
+.cars-menu__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding-top: 16px;
+  background: var(--cars-rail-bg);
+}
+ 
+.cars-menu__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.cars-menu__logo img {
+  height: 40px;
+  width: auto;
+  max-width: 44px;
+  object-fit: contain;
+}
+ 
+.cars-menu__close {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--f-white);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 300ms var(--ease), border-color 300ms var(--ease),
+    color 300ms var(--ease);
+}
+ 
+.cars-menu__close svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+}
+ 
+.cars-menu__close:hover {
+  background: var(--f-white);
+  border-color: var(--f-white);
+  color: #000;
+}
+ 
+/* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+ 
+.cars-menu__nav {
+  min-width: 0;
+  padding: 82px 32px 40px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #444 transparent;
+ 
+  /* entrada: desliza da esquerda */
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 400ms var(--ease), transform 600ms var(--cars-out);
+}
+ 
+.cars-menu.is-open .cars-menu__nav {
+  opacity: 1;
+  transform: none;
+  transition-delay: 120ms;
+}
+ 
+.cars-menu__label {
+  margin: 0 0 12px;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: 112%;
+  line-height: var(--cars-row);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cars-muted);
+}
+ 
+.cars-menu__cols {
+  display: grid;
+  grid-template-columns: minmax(150px, 248px) minmax(0, 1fr);
+  column-gap: clamp(32px, 4.2vw, 72px);
+  align-items: start;
+}
+ 
+.cars-menu__primary {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ 
+/* ---------- item genérico (coluna esquerda e títulos de grupo) ---------- */
+ 
+.cars-item {
+  display: flex;
+  align-items: center;
+  height: var(--cars-row);
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--cars-muted);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 200ms var(--ease);
+}
+ 
+.cars-item:hover {
+  color: var(--f-white);
+}
+ 
+.cars-item svg {
+  flex: 0 0 auto;
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+ 
+/* coluna esquerda: chevron alinhado à direita da coluna */
+.cars-menu__primary .cars-item {
+  width: 100%;
+  justify-content: space-between;
+}
+ 
+/* "All models" — tela atual */
+.cars-item.is-current {
+  color: var(--f-white);
+  font-weight: 700;
+  cursor: default;
+}
+ 
+/* ---------- grupos (Range, Special Series...) ---------- */
+ 
+.cars-menu__groups {
+  min-width: 0;
+}
+ 
+.cars-group__toggle {
+  gap: 10px;
+}
+ 
+/* o SVG aponta para a direita: fechado = para baixo, aberto = para cima */
+.cars-group__toggle svg {
+  width: 22px;
+  height: 22px;
+  transform: rotate(90deg);
+  transition: transform 300ms var(--ease);
+}
+ 
+.cars-group.is-open .cars-group__toggle svg {
+  transform: rotate(-90deg);
+}
+ 
+/* abre/fecha animando a altura (0fr -> 1fr) */
+.cars-group__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 350ms var(--ease);
+}
+ 
+.cars-group.is-open .cars-group__body {
+  grid-template-rows: 1fr;
+}
+ 
+.cars-group__list {
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+ 
+  /* fechado: os links saem da ordem do Tab e do leitor de tela */
+  visibility: hidden;
+  transition: visibility 0s linear 350ms;
+}
+ 
+.cars-group.is-open .cars-group__list {
+  visibility: visible;
+  transition-delay: 0s;
+}
+ 
+.cars-group__list li:first-child {
+  margin-top: 8px;
+}
+ 
+.cars-group__list li:last-child {
+  margin-bottom: 16px;
+}
+ 
+/* ---------- modelos ---------- */
+ 
+.cars-model {
+  display: flex;
+  align-items: center;
+  height: var(--cars-row);
+  padding-left: 24px;
+  color: var(--cars-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 200ms var(--ease);
+}
+ 
+.cars-model:hover,
+.cars-model.is-active {
+  color: var(--f-white);
+}
+ 
+.cars-model.is-active {
+  font-weight: 700;
+}
+ 
+/* =========================================================
+   PAINEL DO CARRO
+   ========================================================= */
+ 
+.cars-menu__preview {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 0 40px clamp(64px, 12vh, 120px);
+  background: radial-gradient(
+    ellipse 85% 75% at 50% 42%,
+    #484848 0%,
+    #363636 42%,
+    #1b1b1b 100%
+  );
+ 
+  /* entrada: só aparece (fade) depois da navegação */
+  opacity: 0;
+  transition: opacity 500ms var(--ease);
+}
+ 
+.cars-menu.is-open .cars-menu__preview {
+  opacity: 1;
+  transition-delay: 200ms;
+}
+ 
+/* nome + imagem trocam juntos (o JS liga/desliga .is-out) */
+.cars-menu__stage {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 0;
+  padding-top: clamp(48px, 9vh, 76px);
+  padding-bottom: 32px;
+  transition: opacity 160ms ease;
+}
+ 
+.cars-menu__stage.is-out {
+  opacity: 0;
+}
+ 
+.cars-menu__title {
+  flex: 0 0 auto;
+  min-height: 1em;
+  margin: 0;
+  font-size: clamp(26px, 2.2vw, 38px);
+  font-weight: 800;
+  font-stretch: 125%;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: skewX(-10deg); /* aproxima o estilo itálico das logos dos modelos */
+}
+ 
+.cars-menu__img {
+  flex: 1 1 0;
+  width: min(760px, 100%);
+  min-height: 0;
+  margin-top: 24px;
+  object-fit: contain;
+  filter: drop-shadow(0 28px 28px rgba(0, 0, 0, 0.5));
+}
+ 
+/* o path da imagem ainda não existe: fica só o nome, maior e centralizado */
+.cars-menu__img.is-missing {
+  visibility: hidden;
+}
+ 
+.cars-menu__stage:has(.cars-menu__img.is-missing) {
+  justify-content: center;
+  padding-top: 0;
+}
+ 
+.cars-menu__stage:has(.cars-menu__img.is-missing) .cars-menu__title {
+  font-size: clamp(36px, 4vw, 68px);
+}
+ 
+.cars-menu__stage:has(.cars-menu__img.is-missing) .cars-menu__img {
+  flex: 0 0 0;
+  margin: 0;
+}
+ 
+/* ---------- botão Discover more ---------- */
+ 
+.cars-menu__cta {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  max-width: 100%;
+  height: 58px;
+  background: linear-gradient(180deg, #ea4336 0%, #d92a1d 100%);
+  color: var(--f-white);
+  font-size: 13px;
+  font-weight: 700;
+  font-stretch: 112%;
+  letter-spacing: 0.09em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: filter 250ms var(--ease);
+}
+ 
+.cars-menu__cta:hover,
+.cars-menu__cta:focus-visible {
+  filter: brightness(1.12);
+}
+ 
+/* a seta só aparece no hover / foco */
+.cars-menu__cta-icon {
+  display: grid;
+  place-items: center;
+  width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: width 250ms var(--ease), margin-left 250ms var(--ease), opacity 250ms var(--ease);
+}
+ 
+.cars-menu__cta-icon svg {
+  flex: 0 0 auto;
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+ 
+.cars-menu__cta:hover .cars-menu__cta-icon,
+.cars-menu__cta:focus-visible .cars-menu__cta-icon {
+  width: 14px;
+  margin-left: 12px;
+  opacity: 1;
+}
+ 
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+ 
+/* telas médias: encolhe a lista para caber ao lado do painel */
+@media (max-width: 1200px) {
+  .cars-menu {
+    font-size: 16px;
+  }
+ 
+  .cars-menu__nav {
+    padding-inline: 24px;
+  }
+}
+ 
+/* celular / tablet: trilho vira barra no topo, sem painel do carro (não há hover) */
+@media (max-width: 900px) {
+  .cars-menu {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+ 
+  .cars-menu__rail {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    padding: 12px 16px;
+  }
+ 
+  .cars-menu__nav {
+    padding: 24px 20px 40px;
+    transform: translateY(16px);
+  }
+ 
+  .cars-menu__label {
+    margin-bottom: 8px;
+  }
+ 
+  .cars-menu__cols {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 8px;
+  }
+ 
+  .cars-menu__preview {
+    display: none;
+  }
+}
+ 
+/* movimento reduzido: aparece direto */
+@media (prefers-reduced-motion: reduce) {
+  .cars-menu__nav,
+  .cars-menu.is-open .cars-menu__nav {
+    transform: none;
+  }
+ 
+  .cars-group__body {
+    transition: none;
+  }
+}
+ 
